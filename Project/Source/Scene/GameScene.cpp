@@ -14,6 +14,7 @@
 #include "../Game/Player/AnimPlayer.h"
 #include "../Game/Core/Core.h"
 #include "../Game/Portal/Portal.h"
+#include "../UI/UI.h"
 #include "Fade.h"
 
 GameScene::GameScene()
@@ -31,6 +32,12 @@ GameScene::GameScene()
 	core_ = Object::Create<Core>();
 	Portal* portal =  Object::Create<Portal>();
 	portal->SetPosition(10.0f,0.0f,0.0f);
+
+	UI* ui = Object::Create<UI>(TextureManager::Tex_Fade);
+	ui->SetScale(100.0f,100.0f,100.0f);
+	ui->SetPosition((float)ScreenWidth / 2.0f, (float)ScreenHeight / 2.0f,0.0f);
+	ui->MoveTexture(1.0f,30.0f,0,0);
+	ui->ScalingTexture(1.0f,30.0f,300.0f,300.0f);
 }
 
 GameScene::~GameScene()
