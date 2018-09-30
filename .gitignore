@@ -7,3 +7,5 @@ Project/Debug/project.pdb
 *.idb
 *.pdb
 *.tlog
+*.ilk
+*.log

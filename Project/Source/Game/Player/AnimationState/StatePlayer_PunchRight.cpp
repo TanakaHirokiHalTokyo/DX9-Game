@@ -6,8 +6,9 @@
 #include "../../../main.h"
 #include "StatePlayer_PunchCombo.h"
 
+constexpr float ANIMATION_SPEED = 2.0f;
 constexpr float ANIMATION_TIME = 1.5f;
-constexpr int ANIMATION_COUNT = (int)ANIMATION_TIME * GameFPS;
+constexpr int ANIMATION_COUNT = (int)ANIMATION_TIME * GameFPS / ANIMATION_SPEED;
 
 void StatePlayer_PunchRight::UpdateKeyboard(DefaultPlayer * player)
 {
@@ -16,6 +17,8 @@ void StatePlayer_PunchRight::UpdateKeyboard(DefaultPlayer * player)
 
 	//UpdateCount
 	count_++;
+
+	player_model->SetAnimPlaySpeed(ANIMATION_SPEED);
 
 	if (GetKeyboardTrigger(PUNCH_KEY))
 	{

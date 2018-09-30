@@ -6,6 +6,7 @@
 #include "StatePlayer_Walk_Back.h"
 #include "StatePlayer_KickRight.h"
 #include "StatePlayer_PunchLeft.h"
+#include "StatePlayer_Run.h"
 
 void StatePlayer_Idle::UpdateKeyboard(DefaultPlayer* player)
 {
@@ -39,7 +40,7 @@ void StatePlayer_Idle::UpdateKeyboard(DefaultPlayer* player)
 		if (GetKeyboardPress(SPRINT_KEY))
 		{
 			player_model->ChangeAnim(DefaultPlayer::RUN, ANIMATION_SHIFTTIME);
-			player->ChangeState(new StatePlayer_Walk_Forward());
+			player->ChangeState(new StatePlayer_Run());
 			return;
 		}
 

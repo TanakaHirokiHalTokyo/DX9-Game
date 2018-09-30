@@ -86,7 +86,7 @@ void ShadowMapShader::SetInfo(D3DXMATRIX world)
 	effect_->SetMatrix("WVProj",&wvp);
 	
 	//ÉâÉCÉgÇÃê›íË
-	const auto lightPos = D3DXVECTOR3(15.0f,30.0f,0.0f);
+	const auto lightPos = D3DXVECTOR3(0.0f,30.0f, -15.0f);
 	const auto lightAt = D3DXVECTOR3(0, 0, 0);
 	const auto lightUp = D3DXVECTOR3(0,1.0f,0);
 

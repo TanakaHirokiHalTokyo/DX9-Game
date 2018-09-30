@@ -9,6 +9,7 @@ class Enemy;
 class PlayerCamera;
 class EnemyAnimation;
 class MeshField;
+class Core;
 
 class GameScene:public Scene
 {
@@ -29,4 +30,5 @@ private:
 	MeshField* field_ = nullptr;
 	PlayerCamera* playerCamera_ = nullptr;
 	Player* player_ = nullptr;
+	Core* core_ = nullptr;
 };

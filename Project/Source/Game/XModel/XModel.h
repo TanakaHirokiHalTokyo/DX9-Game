@@ -24,6 +24,7 @@ const XFILENAME g_aXFileName[] =
 	{ "resource/Xmodel/anim/ARM_R.x" },
 	{ "resource/Xmodel/anim/ARM_L.x" },
 	{ "resource/Xmodel/anim/ASI.x" },
+	{ "resource/Xmodel/core.x" },
 };
 
 
@@ -39,6 +40,7 @@ public:
 		MODEL_ARM_R,
 		MODEL_ARM_L,
 		MODEL_ASI,
+		MODE_CORE,
 		MODEL_MAX
 	};
 

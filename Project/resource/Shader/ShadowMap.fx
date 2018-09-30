@@ -12,7 +12,7 @@ texture MeshTex;
 texture ShadowTex;
 float Margin;
 
-#define TEX_SIZE 2048
+#define TEX_SIZE 4096
 
 //==============================================================
 // テクスチャサンプラ

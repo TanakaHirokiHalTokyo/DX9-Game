@@ -12,7 +12,7 @@
 #include "../DirectXRenderer.h"
 #include "../Game/Player/DefaultPlayer.h"
 #include "../Game/Player/AnimPlayer.h"
-
+#include "../Game/Core/Core.h"
 #include "Fade.h"
 
 GameScene::GameScene()
@@ -26,6 +26,7 @@ GameScene::GameScene()
 	dome->SetModelType(XModel::MODEL_DOME303);
 	dome->SetScale(10.0f, 10.0f, 10.0f);
 	field_ = Object::Create<MeshField>();
+	core_ = Object::Create<Core>();
 	player_ = Object::Create<DefaultPlayer>();
 	
 
@@ -33,6 +34,7 @@ GameScene::GameScene()
 
 GameScene::~GameScene()
 {
+	ShadowMapShader::Uninit();
 	Object::ReleaseAll();
 }
 
