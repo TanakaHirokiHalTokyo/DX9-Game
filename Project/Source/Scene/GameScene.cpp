@@ -26,10 +26,8 @@ GameScene::GameScene()
 	dome->SetModelType(XModel::MODEL_DOME303);
 	dome->SetScale(10.0f, 10.0f, 10.0f);
 	field_ = Object::Create<MeshField>();
-	core_ = Object::Create<Core>();
 	player_ = Object::Create<DefaultPlayer>();
-	
-
+	core_ = Object::Create<Core>();
 }
 
 GameScene::~GameScene()

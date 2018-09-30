@@ -3,7 +3,7 @@
 
 class StateCore;
 class XModel;
-class Billboard;
+class CEffekseer;
 
 class Core :public Object
 {
@@ -18,7 +18,7 @@ public:
 	void EndDraw()override;
 
 private:
-	Billboard* test_ = nullptr;
 	StateCore* stateCore_ = nullptr;		//Coreの状態を管理
 	XModel* model_ = nullptr;				//Model情報
+	CEffekseer* coreEffect_ = nullptr;		//Coreのエフェクト
 };

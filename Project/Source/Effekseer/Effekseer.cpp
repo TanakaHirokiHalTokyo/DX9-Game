@@ -1,12 +1,12 @@
 
 
 #include "Effekseer.h"
-#include "../DirectXRenderer/DirectX9Renderer.h"
+#include "../DirectXRenderer.h"
 #include "../Imgui/ImguiManager.h"
 #include "../Camera/Camera.h"
 
 static Camera* camera;
-CEffekseer::CEffekseer(Effect EffectType, D3DXVECTOR3 pos)
+CEffekseer::CEffekseer(Effect EffectType)
 {
 	//描画管理用インスタンスの生成
 	effekseerRenderer_ = ::EffekseerRendererDX9::Renderer::Create(CRendererDirectX::GetDevice(), 2000);
@@ -29,7 +29,6 @@ CEffekseer::CEffekseer(Effect EffectType, D3DXVECTOR3 pos)
 	effekseerManager_->SetCoordinateSystem(Effekseer::CoordinateSystem::LH);
 
 	this->effectType_ = EffectType;
-	this->SetLocation(pos);
 
 	this->SetProj(Fov, (float)ScreenWidth, (float)ScreenHeight, Proj_Near, Proj_Far);
 
@@ -40,16 +39,7 @@ CEffekseer::CEffekseer(Effect EffectType, D3DXVECTOR3 pos)
 	this->SetScale(1.0f,1.0f,1.0f);
 }
 
-void CEffekseer::LoadEffect()
-{
-	//エフェクトの読み込み
-	effekseerEffect_ = Effekseer::Effect::Create(effekseerManager_, (const EFK_CHAR*)fileName_[effectType_].fileName);
-}
-void CEffekseer::Init()
-{
-	
-}
-void CEffekseer::Uninit()
+CEffekseer::~CEffekseer()
 {
 	// エフェクトの停止
 	this->Stop();
@@ -66,9 +56,27 @@ void CEffekseer::Uninit()
 	effekseerHandle_ = NULL;
 
 }
+
+void CEffekseer::LoadEffect()
+{
+	//エフェクトの読み込み
+	effekseerEffect_ = Effekseer::Effect::Create(effekseerManager_, (const EFK_CHAR*)fileName_[effectType_].fileName);
+	if (effekseerEffect_ == NULL)
+	{
+		MessageBoxA(NULL, "エフェクト読み込み失敗", "ERROR", MB_OK);
+	}
+
+}
+void CEffekseer::Init()
+{
+	
+}
+void CEffekseer::Uninit()
+{
+	
+}
 void CEffekseer::Update()
 {
-
 	CAMERA_INFO camInfo = Camera::GetCameraInfo();
 
 	this->SetView(camInfo.pos, camInfo.at, camInfo.up);
@@ -88,6 +96,7 @@ void CEffekseer::Update()
 	mtxWorld *= mtxTrans;
 
 	this->SetMatrix(mtxWorld);
+	SetSpeed(speed_);
 
 	playing_ = effekseerManager_->Exists(effekseerHandle_);
 	if (!playing_)
@@ -111,10 +120,9 @@ void CEffekseer::Draw()
 {
 	//effekseerRenderer_->SetRenderMode(Effekseer::RenderMode::Wireframe);
 
-	
-
 	if (GetVisible())
 	{
+		
 		effekseerRenderer_->BeginRendering();
 		effekseerManager_->Draw();
 		effekseerRenderer_->EndRendering();
@@ -134,14 +142,10 @@ void CEffekseer::SetView(D3DXVECTOR3 Pos, D3DXVECTOR3 At, D3DXVECTOR3 Up)
 		Effekseer::Vector3D(Up.x, Up.y, Up.z)
 	));
 }
-void CEffekseer::SetLocation(D3DXVECTOR3 pos)
-{
-	transform_.pos = pos;
-	effekseerManager_->SetLocation(effekseerHandle_, Effekseer::Vector3D(pos.x, pos.y, pos.z));
-}
 void CEffekseer::SetSpeed(float speed)
 {
-	effekseerManager_->SetSpeed(effekseerHandle_, speed);
+	speed_ = speed;
+	effekseerManager_->SetSpeed(effekseerHandle_, speed_);
 }
 void CEffekseer::RepeatEffect(bool repeat)
 {

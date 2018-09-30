@@ -7,11 +7,16 @@
 #include "../Shader/ShadowMapShader.h"
 #include "../Shader/ToonShader.h"
 #include "../Billboard/Billboard.h"
+#include "../../Effekseer/Effekseer.h"
 
 Core::Core()
 {
 	model_ = Object::Create<XModel>();
 	model_->SetModelType(XModel::MODE_CORE);
+	coreEffect_ =new CEffekseer(CEffekseer::Effect_Core);
+	coreEffect_->Init();
+	coreEffect_->RepeatEffect(true);
+	coreEffect_->Play();
 	stateCore_ = new StateCore_Default();
 }
 
@@ -21,6 +26,12 @@ Core::~Core()
 	{
 		delete stateCore_;
 		stateCore_ = nullptr;
+	}
+	if (coreEffect_ != nullptr)
+	{
+		coreEffect_->Uninit();
+		delete coreEffect_;
+		coreEffect_ = nullptr;
 	}
 }
 
@@ -33,6 +44,10 @@ void Core::Init()
 	model_->SetRotation(GetRotate());
 	model_->SetScale(GetScale());
 	model_->SetUseShader(true);
+	coreEffect_->SetPosition(GetPosition().x,0.0f,GetPosition().z);
+	coreEffect_->SetVisible(true);
+	coreEffect_->SetScale(0.2f, 0.2f, 0.2f);
+	coreEffect_->SetSpeed(1.5f);
 }
 
 void Core::Uninit()
@@ -49,6 +64,8 @@ void Core::Update()
 	model_->SetPosition(GetPosition());
 	model_->SetRotation(GetRotate());
 	model_->SetScale(GetScale());
+
+	coreEffect_->Update();
 }
 
 void Core::BeginDraw()
@@ -106,6 +123,8 @@ void Core::Draw()
 	ImGui::Begin("Core Info"); 
 	ImGui::Text("Position : %f %f %f",GetPosition().x, GetPosition().y, GetPosition().z);
 	ImGui::End();
+
+	coreEffect_->Draw();
 }
 
 void Core::EndDraw()
