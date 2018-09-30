@@ -1,0 +1,9 @@
+*.opendb
+*.db
+*.vcxproj
+*.filters
+Project/Debug/project.pdb
+*.suo
+*.idb
+*.pdb
+*.tlog

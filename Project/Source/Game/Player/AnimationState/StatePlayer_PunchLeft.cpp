@@ -7,7 +7,7 @@
 #include "StatePlayer_PunchRight.h"
 
 
-constexpr float ANIMATION_TIME = 0.5f;
+constexpr float ANIMATION_TIME = 1.5f;
 constexpr int ANIMATION_COUNT = (int)ANIMATION_TIME * GameFPS;
 
 void StatePlayer_PunchLeft::UpdateKeyboard(DefaultPlayer * player)

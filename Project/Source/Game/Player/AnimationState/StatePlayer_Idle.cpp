@@ -5,6 +5,7 @@
 #include "StatePlayer_Walk_Forward.h"
 #include "StatePlayer_Walk_Back.h"
 #include "StatePlayer_KickRight.h"
+#include "StatePlayer_PunchLeft.h"
 
 void StatePlayer_Idle::UpdateKeyboard(DefaultPlayer* player)
 {
@@ -21,6 +22,13 @@ void StatePlayer_Idle::UpdateKeyboard(DefaultPlayer* player)
 	{
 		player_model->ChangeAnim(DefaultPlayer::KICK_RIGHT,ANIMATION_SHIFTTIME);
 		player->ChangeState(new StatePlayer_KickRight());
+		return;
+	}
+	//ƒpƒ“ƒ`
+	if (GetKeyboardTrigger(PUNCH_KEY))
+	{
+		player_model->ChangeAnim(DefaultPlayer::PUNCH_LEFT,ANIMATION_SHIFTTIME);
+		player->ChangeState(new StatePlayer_PunchLeft());
 		return;
 	}
 

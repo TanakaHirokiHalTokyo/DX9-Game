@@ -4,8 +4,9 @@
 #include "../../SkinMesh/sceneSkinMesh.h"
 #include "../../../DInput/DirectInput.h"
 #include "../../../main.h"
+#include "StatePlayer_PunchCombo.h"
 
-constexpr float ANIMATION_TIME = 0.5f;
+constexpr float ANIMATION_TIME = 1.5f;
 constexpr int ANIMATION_COUNT = (int)ANIMATION_TIME * GameFPS;
 
 void StatePlayer_PunchRight::UpdateKeyboard(DefaultPlayer * player)
@@ -26,7 +27,7 @@ void StatePlayer_PunchRight::UpdateKeyboard(DefaultPlayer * player)
 		if (combo_)
 		{
 			player_model->ChangeAnim(DefaultPlayer::PUNCH_COMBO,ANIMATION_SHIFTTIME);
-			player->ChangeState();
+			player->ChangeState(new StatePlayer_PunchCombo());
 			return;
 		}
 		player_model->ChangeAnim(DefaultPlayer::IDLE, ANIMATION_SHIFTTIME);
