@@ -13,6 +13,7 @@
 #include "../Game/Player/DefaultPlayer.h"
 #include "../Game/Player/AnimPlayer.h"
 #include "../Game/Core/Core.h"
+#include "../Game/Portal/Portal.h"
 #include "Fade.h"
 
 GameScene::GameScene()
@@ -28,6 +29,8 @@ GameScene::GameScene()
 	field_ = Object::Create<MeshField>();
 	player_ = Object::Create<DefaultPlayer>();
 	core_ = Object::Create<Core>();
+	Portal* portal =  Object::Create<Portal>();
+	portal->SetPosition(10.0f,0.0f,0.0f);
 }
 
 GameScene::~GameScene()
