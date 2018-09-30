@@ -3,6 +3,7 @@
 
 class StateCore;
 class XModel;
+class Billboard;
 
 class Core :public Object
 {
@@ -17,6 +18,7 @@ public:
 	void EndDraw()override;
 
 private:
+	Billboard* test_ = nullptr;
 	StateCore* stateCore_ = nullptr;		//Core‚Ìó‘Ô‚ğŠÇ—
 	XModel* model_ = nullptr;				//Modelî•ñ
 };

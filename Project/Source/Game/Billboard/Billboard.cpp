@@ -5,83 +5,8 @@
 #include "../../Imgui/ImguiManager.h"
 #include "../../Camera/Camera.h"
 
+
 Billboard::Billboard()
-{
-
-}
-Billboard::~Billboard()
-{
-}
-void Billboard::Init()
-{
-	
-}
-void Billboard::Uninit()
-{
-	
-}
-void Billboard::Update()
-{
-	CAMERA_INFO camInfo = Camera::GetCameraInfo();
-
-	this->SetView(camInfo.view);
-}
-void Billboard::BeginDraw()
-{
-}
-void Billboard::Draw()
-{
-	
-}
-
-void Billboard::EndDraw()
-{
-}
-
-void Billboard::SetView(D3DXMATRIX view)
-{
-	if (stand_)
-	{
-		D3DXMatrixIdentity(&this->mtxView_);
-		this->mtxView_ = view;
-		D3DXMatrixTranspose(&mtxView_, &mtxView_);
-
-		mtxView_._14 = 0.0f;				//41の平行移動成分が入っているので0に
-		mtxView_._24 = 0.0f;				//42の平行移動成分が入っているので0に
-		mtxView_._34 = 0.0f;				//43の平行移動成分が入っているので0に
-
-		mtxView_._12 = 0.0f;
-		mtxView_._21 = 0.0f;
-
-		mtxView_._23 = 0.0f;
-		mtxView_._32 = 0.0f;
-	}
-	else
-	{
-		D3DXMatrixIdentity(&this->mtxView_);
-		this->mtxView_ = view;
-		D3DXMatrixTranspose(&mtxView_, &mtxView_);
-
-		mtxView_._14 = 0.0f;				//41の平行移動成分が入っているので0に
-		mtxView_._24 = 0.0f;				//42の平行移動成分が入っているので0に
-		mtxView_._34 = 0.0f;				//43の平行移動成分が入っているので0に
-	}
-}
-
-void BillboardManager::SetTexture(TextureManager::TextureList texture)
-{
-	TextureManager::TexInfo textureInfo = TextureManager::GetTexture(texture);
-	pTexture_ = textureInfo.pTex;
-	texSize_ = D3DXVECTOR2(textureInfo.width,textureInfo.height);
-	texcoordSize_ = D3DXVECTOR2(textureInfo.texcoordX,textureInfo.texcoordY);
-}
-
-void Billboard::SetStand(bool stand)
-{
-	stand_ = stand;
-}
-
-void BillboardManager::Init()
 {
 	LPDIRECT3DDEVICE9 pDevice = CRendererDirectX::GetDevice();
 
@@ -159,7 +84,7 @@ void BillboardManager::Init()
 	this->pIndexBuffer_->Unlock();
 }
 
-void BillboardManager::Uninit()
+Billboard::~Billboard()
 {
 	if (this->pIndexBuffer_ != nullptr)
 	{
@@ -173,154 +98,270 @@ void BillboardManager::Uninit()
 	}
 }
 
-void BillboardManager::Draw()
+void Billboard::Init()
 {
-	LPDIRECT3DDEVICE9 pDevice = CRendererDirectX::GetDevice();
-	VERTEX3D* Vertex;
+	SetPosition(0,0,0);
+}
 
+void Billboard::Uninit()
+{
+	
+}
+
+void Billboard::Update()
+{
+	CAMERA_INFO camInfo = Camera::GetCameraInfo();
+
+	this->SetView(camInfo.view);
+}
+
+void Billboard::BeginDraw()
+{
 	//World行列に各行列をセット
-	D3DXMATRIX mtxTrans, mtxScale, mtxWorld;
+	D3DXMATRIX mtxTrans, mtxScale;
 
 	D3DXMatrixTranslation(&mtxTrans, transform_.pos.x, transform_.pos.y, transform_.pos.z);
 	D3DXMatrixScaling(&mtxScale, transform_.scale.x, transform_.scale.y, transform_.scale.z);
 
 
-	mtxWorld = this->mtxView_;
-	mtxWorld *= mtxScale;
-	mtxWorld *= mtxTrans;
-
-
-	pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);
-
-	//アルファテストをTRUEにする
-	pDevice->SetRenderState(D3DRS_ALPHATESTENABLE, TRUE);
-	pDevice->SetRenderState(D3DRS_ALPHAREF, 40);
-	pDevice->SetRenderState(D3DRS_ALPHAFUNC, D3DCMP_GREATER);
-
-
-	//FVFの設定
-	pDevice->SetFVF(FVF_VERTEX3D);
-
-	//ライトオフにする
-	pDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
-
-	//テクスチャセット
-	pDevice->SetTexture(0, this->pTexture_);
-	//各種行列の設定
-	pDevice->SetTransform(D3DTS_WORLD, &mtxWorld);
-
-	//Vertex情報登録
-	this->pVertexBuffer_->Lock(
-		0,
-		0,
-		(void**)&Vertex,
-		D3DLOCK_DISCARD						//Lockしている範囲を書き込み専用で上書きをする
-	);
-
-	float u0 = (float)this->texcoord_.x / this->texSize_.x;
-	float v0 = (float)this->texcoord_.y / this->texSize_.y;
-	float u1 = (float)(this->texcoord_.x + this->texcoordSize_.x) / this->texSize_.x;
-	float v1 = (float)(this->texcoord_.y + this->texcoordSize_.y) / this->texSize_.y;
-
-	Vertex[0].color =
-		Vertex[1].color =
-		Vertex[2].color =
-		Vertex[3].color = this->color_;
-
-	Vertex[0].texcoord = D3DXVECTOR2(u0, v0);
-	Vertex[1].texcoord = D3DXVECTOR2(u1, v0);
-	Vertex[2].texcoord = D3DXVECTOR2(u1, v1);
-	Vertex[3].texcoord = D3DXVECTOR2(u0, v1);
-
-	this->pVertexBuffer_->Unlock();
-
-
-
-	// GPUとVertexBufferをパイプラインでつなぐ - +
-	pDevice->SetStreamSource(
-		0,						//パイプラインのセット番号
-		this->pVertexBuffer_,		//バッファ
-		0,						//どこから書き込むか
-		sizeof(VERTEX3D)		//隣の頂点までどれくらいの長さ
-	);
-
-	// デバイスにインデックスセット
-	pDevice->SetIndices(
-		this->pIndexBuffer_				//バッファ
-	);
-
-	//次からバッファ使いたくないときが来たときバッファをNULLにすれば使わなくなる。
-
-	pDevice->DrawIndexedPrimitive(
-		D3DPT_TRIANGLELIST,
-		0,
-		0,
-		4,			//頂点数
-		0,
-		2			//プリミティブ数
-	);
-
-
-	//アルファテストをFALSEにする
-	pDevice->SetRenderState(D3DRS_ALPHATESTENABLE, FALSE);
-
-	pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);
-	//ライトオンにする
-	pDevice->SetRenderState(D3DRS_LIGHTING, TRUE);
-
+	world_ = this->mtxView_;
+	world_ *= mtxScale;
+	world_ *= mtxTrans;
 }
 
-void BillboardManager::SetPosition(float x, float y, float z)
+void Billboard::Draw()
 {
-	transform_.pos = D3DXVECTOR3(x,y,z);
+	if (!useShader_)
+	{
+		LPDIRECT3DDEVICE9 pDevice = CRendererDirectX::GetDevice();
+		VERTEX3D* Vertex;
+
+
+		pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);
+
+		//アルファテストをTRUEにする
+		pDevice->SetRenderState(D3DRS_ALPHATESTENABLE, TRUE);
+		pDevice->SetRenderState(D3DRS_ALPHAREF, 30);
+		pDevice->SetRenderState(D3DRS_ALPHAFUNC, D3DCMP_GREATER);
+
+
+		//FVFの設定
+		pDevice->SetFVF(FVF_VERTEX3D);
+
+		//ライトオフにする
+		pDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
+
+		//テクスチャセット
+		pDevice->SetTexture(0, this->pTexture_);
+		//各種行列の設定
+		pDevice->SetTransform(D3DTS_WORLD, &world_);
+
+		//Vertex情報登録
+		this->pVertexBuffer_->Lock(
+			0,
+			0,
+			(void**)&Vertex,
+			D3DLOCK_DISCARD						//Lockしている範囲を書き込み専用で上書きをする
+		);
+
+		float u0 = (float)this->texcoord_.x / this->texSize_.x;
+		float v0 = (float)this->texcoord_.y / this->texSize_.y;
+		float u1 = (float)(this->texcoord_.x + this->texcoordSize_.x) / this->texSize_.x;
+		float v1 = (float)(this->texcoord_.y + this->texcoordSize_.y) / this->texSize_.y;
+
+		Vertex[0].color =
+			Vertex[1].color =
+			Vertex[2].color =
+			Vertex[3].color = this->color_;
+
+		Vertex[0].texcoord = D3DXVECTOR2(u0, v0);
+		Vertex[1].texcoord = D3DXVECTOR2(u1, v0);
+		Vertex[2].texcoord = D3DXVECTOR2(u1, v1);
+		Vertex[3].texcoord = D3DXVECTOR2(u0, v1);
+
+		this->pVertexBuffer_->Unlock();
+
+
+
+		// GPUとVertexBufferをパイプラインでつなぐ - +
+		pDevice->SetStreamSource(
+			0,						//パイプラインのセット番号
+			this->pVertexBuffer_,		//バッファ
+			0,						//どこから書き込むか
+			sizeof(VERTEX3D)		//隣の頂点までどれくらいの長さ
+		);
+
+		// デバイスにインデックスセット
+		pDevice->SetIndices(
+			this->pIndexBuffer_				//バッファ
+		);
+
+		//次からバッファ使いたくないときが来たときバッファをNULLにすれば使わなくなる。
+
+		pDevice->DrawIndexedPrimitive(
+			D3DPT_TRIANGLELIST,
+			0,
+			0,
+			4,			//頂点数
+			0,
+			2			//プリミティブ数
+		);
+
+
+		//アルファテストをFALSEにする
+		pDevice->SetRenderState(D3DRS_ALPHATESTENABLE, FALSE);
+
+		pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);
+		//ライトオンにする
+		pDevice->SetRenderState(D3DRS_LIGHTING, TRUE);
+	}
+	
+
 }
 
-void BillboardManager::SetPosition(D3DXVECTOR3 pos)
+void Billboard::Draw(LPD3DXEFFECT effect, UINT pass)
 {
-	transform_.pos = pos;
+	if(useShader_)
+	{
+		effect->Begin(NULL,0);
+		effect->BeginPass(pass);
+
+		LPDIRECT3DDEVICE9 pDevice = CRendererDirectX::GetDevice();
+		VERTEX3D* Vertex;
+
+
+		pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);
+
+		//アルファテストをTRUEにする
+		pDevice->SetRenderState(D3DRS_ALPHATESTENABLE, TRUE);
+		pDevice->SetRenderState(D3DRS_ALPHAREF, 30);
+		pDevice->SetRenderState(D3DRS_ALPHAFUNC, D3DCMP_GREATER);
+
+
+		//FVFの設定
+		pDevice->SetFVF(FVF_VERTEX3D);
+		//各種行列の設定
+		pDevice->SetTransform(D3DTS_WORLD, &world_);
+
+		//ライトオフにする
+		pDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
+
+		effect->SetVector("Diffuse", &D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f));
+		effect->SetTexture("MeshTex", pTexture_);
+		effect->CommitChanges();
+		
+
+		//Vertex情報登録
+		this->pVertexBuffer_->Lock(
+			0,
+			0,
+			(void**)&Vertex,
+			D3DLOCK_DISCARD						//Lockしている範囲を書き込み専用で上書きをする
+		);
+
+		float u0 = (float)this->texcoord_.x / this->texSize_.x;
+		float v0 = (float)this->texcoord_.y / this->texSize_.y;
+		float u1 = (float)(this->texcoord_.x + this->texcoordSize_.x) / this->texSize_.x;
+		float v1 = (float)(this->texcoord_.y + this->texcoordSize_.y) / this->texSize_.y;
+
+		Vertex[0].color =
+			Vertex[1].color =
+			Vertex[2].color =
+			Vertex[3].color = this->color_;
+
+		Vertex[0].texcoord = D3DXVECTOR2(u0, v0);
+		Vertex[1].texcoord = D3DXVECTOR2(u1, v0);
+		Vertex[2].texcoord = D3DXVECTOR2(u1, v1);
+		Vertex[3].texcoord = D3DXVECTOR2(u0, v1);
+
+		this->pVertexBuffer_->Unlock();
+
+
+
+		// GPUとVertexBufferをパイプラインでつなぐ - +
+		pDevice->SetStreamSource(
+			0,						//パイプラインのセット番号
+			this->pVertexBuffer_,		//バッファ
+			0,						//どこから書き込むか
+			sizeof(VERTEX3D)		//隣の頂点までどれくらいの長さ
+		);
+
+		// デバイスにインデックスセット
+		pDevice->SetIndices(
+			this->pIndexBuffer_				//バッファ
+		);
+
+		//次からバッファ使いたくないときが来たときバッファをNULLにすれば使わなくなる。
+
+		pDevice->DrawIndexedPrimitive(
+			D3DPT_TRIANGLELIST,
+			0,
+			0,
+			4,			//頂点数
+			0,
+			2			//プリミティブ数
+		);
+
+
+		//アルファテストをFALSEにする
+		pDevice->SetRenderState(D3DRS_ALPHATESTENABLE, FALSE);
+
+		pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);
+		//ライトオンにする
+		pDevice->SetRenderState(D3DRS_LIGHTING, TRUE);
+
+		effect->EndPass();
+		effect->End();
+	}
 }
 
-D3DXVECTOR3 BillboardManager::GetPosition()
+void Billboard::EndDraw()
 {
-	return transform_.pos;
 }
 
-void BillboardManager::SetRotation(float x, float y, float z)
+void Billboard::SetView(const D3DXMATRIX & view)
 {
-	transform_.rotate = D3DXVECTOR3(x,y,z);
+	if (stand_)
+	{
+		D3DXMatrixIdentity(&this->mtxView_);
+		this->mtxView_ = view;
+		D3DXMatrixTranspose(&mtxView_, &mtxView_);
+
+		mtxView_._14 = 0.0f;				//41の平行移動成分が入っているので0に
+		mtxView_._24 = 0.0f;				//42の平行移動成分が入っているので0に
+		mtxView_._34 = 0.0f;				//43の平行移動成分が入っているので0に
+
+		mtxView_._12 = 0.0f;
+		mtxView_._21 = 0.0f;
+
+		mtxView_._23 = 0.0f;
+		mtxView_._32 = 0.0f;
+	}
+	else
+	{
+		D3DXMatrixIdentity(&this->mtxView_);
+		this->mtxView_ = view;
+		D3DXMatrixTranspose(&mtxView_, &mtxView_);
+
+		mtxView_._14 = 0.0f;				//41の平行移動成分が入っているので0に
+		mtxView_._24 = 0.0f;				//42の平行移動成分が入っているので0に
+		mtxView_._34 = 0.0f;				//43の平行移動成分が入っているので0に
+	}
 }
 
-void BillboardManager::SetRotation(D3DXVECTOR3 rot)
-{
-	transform_.rotate = rot;
-}
-
-D3DXVECTOR3 BillboardManager::GetRotation()
-{
-	return transform_.rotate;
-}
-
-void BillboardManager::SetView(const D3DXMATRIX & view)
-{
-	mtxView_ = view;
-}
-
-D3DXMATRIX BillboardManager::GetView()
+D3DXMATRIX Billboard::GetView()
 {
 	return mtxView_;
 }
-
-void BillboardManager::SetScale(float x, float y, float z)
+void Billboard::SetTexture(TextureManager::TextureList texture)
 {
-	transform_.scale = D3DXVECTOR3(x,y,z);
+	TextureManager::TexInfo textureInfo = TextureManager::GetTexture(texture);
+	pTexture_ = textureInfo.pTex;
+	texSize_ = D3DXVECTOR2(textureInfo.width, textureInfo.height);
+	texcoordSize_ = D3DXVECTOR2(textureInfo.texcoordX, textureInfo.texcoordY);
 }
 
-void BillboardManager::SetScale(D3DXVECTOR3 scale)
+void Billboard::SetStand(bool stand)
 {
-	transform_.scale = scale;
-}
-
-D3DXVECTOR3 BillboardManager::GetScale()
-{
-	return transform_.scale;
+	stand_ = stand;
 }

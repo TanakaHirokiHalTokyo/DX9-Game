@@ -7,7 +7,7 @@ class StateCore_Default :public StateCore
 {
 public:
 	StateCore_Default();
-	~StateCore_Default();
+	~StateCore_Default()override;
 	void UpdateCore(Core* core)override;
 	void ChangeMoveState(StateCore_UpDown* state);
 

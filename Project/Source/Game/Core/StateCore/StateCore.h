@@ -5,5 +5,6 @@ class Core;
 class StateCore
 {
 public:
+	virtual ~StateCore(){}
 	virtual void UpdateCore(Core* core) = 0;
 };

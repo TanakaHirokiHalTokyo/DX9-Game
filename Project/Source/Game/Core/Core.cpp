@@ -6,6 +6,7 @@
 #include "../Shader/OutlineShader.h"
 #include "../Shader/ShadowMapShader.h"
 #include "../Shader/ToonShader.h"
+#include "../Billboard/Billboard.h"
 
 Core::Core()
 {
@@ -27,7 +28,7 @@ void Core::Init()
 {
 	SetPosition(0.0f, 1.0f, 0.0f);
 	SetRotation(0.0f, 0.0f, 0.0f);
-	SetScale(0.1f, 0.1f, 0.1f);
+	SetScale(0.2f, 0.2f, 0.2f);
 	model_->SetPosition(GetPosition());
 	model_->SetRotation(GetRotate());
 	model_->SetScale(GetScale());
@@ -83,6 +84,7 @@ void Core::Draw()
 	if (model_->GetUseShader())
 	{
 		LPD3DXEFFECT effect;
+
 		//OutlineShaderDraw
 		effect = OutlineShader::GetEffect();
 		OutlineShader::SetInfo(world_);
