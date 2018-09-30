@@ -1,0 +1,65 @@
+﻿  StatePlayer_Run.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  コードを生成中...
+  コンパイル中...
+  Camera.cpp
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\camera\camera.cpp(23): warning C4238: 非標準の拡張機能が使用されています: 右辺値のクラスが左辺値に使用されます。
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\camera\camera.cpp(40): warning C4238: 非標準の拡張機能が使用されています: 右辺値のクラスが左辺値に使用されます。
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\camera\camera.cpp(44): warning C4238: 非標準の拡張機能が使用されています: 右辺値のクラスが左辺値に使用されます。
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\camera\camera.cpp(53): warning C4238: 非標準の拡張機能が使用されています: 右辺値のクラスが左辺値に使用されます。
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\camera\camera.cpp(75): warning C4238: 非標準の拡張機能が使用されています: 右辺値のクラスが左辺値に使用されます。
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\camera\camera.cpp(85): warning C4238: 非標準の拡張機能が使用されています: 右辺値のクラスが左辺値に使用されます。
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\camera\camera.cpp(102): warning C4238: 非標準の拡張機能が使用されています: 右辺値のクラスが左辺値に使用されます。
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\camera\camera.cpp(105): warning C4238: 非標準の拡張機能が使用されています: 右辺値のクラスが左辺値に使用されます。
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\camera\camera.cpp(132): warning C4238: 非標準の拡張機能が使用されています: 右辺値のクラスが左辺値に使用されます。
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\camera\camera.cpp(136): warning C4238: 非標準の拡張機能が使用されています: 右辺値のクラスが左辺値に使用されます。
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\camera\camera.cpp(150): warning C4238: 非標準の拡張機能が使用されています: 右辺値のクラスが左辺値に使用されます。
+  コードを生成中...
+  コンパイル中...
+  GameScene.cpp
+  XModel.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\game\xmodel\xmodel.cpp(150): warning C4238: 非標準の拡張機能が使用されています: 右辺値のクラスが左辺値に使用されます。
+  SkinMeshFile.cpp
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\game\skinmesh\skinmeshfile.cpp(330): warning C4239: 非標準の拡張機能が使用されています: '初期化中': 'CAMERA_INFO' から 'CAMERA_INFO &' への変換です。
+  c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\game\skinmesh\skinmeshfile.cpp(330): note: 非定数の参照は左辺値へのみバインドされます。
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\game\skinmesh\skinmeshfile.cpp(346): warning C4238: 非標準の拡張機能が使用されています: 右辺値のクラスが左辺値に使用されます。
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\game\skinmesh\skinmeshfile.cpp(368): warning C4239: 非標準の拡張機能が使用されています: '初期化中': 'CAMERA_INFO' から 'CAMERA_INFO &' への変換です。
+  c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\game\skinmesh\skinmeshfile.cpp(368): note: 非定数の参照は左辺値へのみバインドされます。
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\game\skinmesh\skinmeshfile.cpp(379): warning C4238: 非標準の拡張機能が使用されています: 右辺値のクラスが左辺値に使用されます。
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\game\skinmesh\skinmeshfile.cpp(502): warning C4244: '初期化中': 'DOUBLE' から 'FLOAT' への変換です。データが失われる可能性があります。
+  ToonShader.cpp
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\game\shader\toonshader.cpp(31): warning C4239: 非標準の拡張機能が使用されています: '初期化中': 'CAMERA_INFO' から 'CAMERA_INFO &' への変換です。
+  c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\game\shader\toonshader.cpp(31): note: 非定数の参照は左辺値へのみバインドされます。
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\game\shader\toonshader.cpp(44): warning C4238: 非標準の拡張機能が使用されています: 右辺値のクラスが左辺値に使用されます。
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\game\shader\toonshader.cpp(47): warning C4238: 非標準の拡張機能が使用されています: 右辺値のクラスが左辺値に使用されます。
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\game\shader\toonshader.cpp(33): warning C4189: 'World': ローカル変数が初期化されましたが、参照されていません
+  ShadowVolume.cpp
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\game\shader\shadowvolume.cpp(36): warning C4238: 非標準の拡張機能が使用されています: 右辺値のクラスが左辺値に使用されます。
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\game\shader\shadowvolume.cpp(38): warning C4238: 非標準の拡張機能が使用されています: 右辺値のクラスが左辺値に使用されます。
+  ShadowMapShader.cpp
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\game\shader\shadowmapshader.cpp(78): warning C4239: 非標準の拡張機能が使用されています: '初期化中': 'CAMERA_INFO' から 'CAMERA_INFO &' への変換です。
+  c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\game\shader\shadowmapshader.cpp(78): note: 非定数の参照は左辺値へのみバインドされます。
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\game\shader\shadowmapshader.cpp(112): warning C4238: 非標準の拡張機能が使用されています: 右辺値のクラスが左辺値に使用されます。
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\game\shader\shadowmapshader.cpp(137): warning C4238: 非標準の拡張機能が使用されています: 右辺値のクラスが左辺値に使用されます。
+  OutlineShader.cpp
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\game\shader\outlineshader.cpp(26): warning C4239: 非標準の拡張機能が使用されています: '初期化中': 'CAMERA_INFO' から 'CAMERA_INFO &' への変換です。
+  c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\game\shader\outlineshader.cpp(26): note: 非定数の参照は左辺値へのみバインドされます。
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\game\shader\outlineshader.cpp(28): warning C4189: 'World': ローカル変数が初期化されましたが、参照されていません
+  PlayerCamera.cpp
+  DefaultPlayer.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\game\player\defaultplayer.cpp(155): warning C4238: 非標準の拡張機能が使用されています: 右辺値のクラスが左辺値に使用されます。
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\game\player\defaultplayer.cpp(158): warning C4238: 非標準の拡張機能が使用されています: 右辺値のクラスが左辺値に使用されます。
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\game\player\defaultplayer.cpp(171): warning C4238: 非標準の拡張機能が使用されています: 右辺値のクラスが左辺値に使用されます。
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\game\player\defaultplayer.cpp(174): warning C4238: 非標準の拡張機能が使用されています: 右辺値のクラスが左辺値に使用されます。
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\game\player\defaultplayer.cpp(152): warning C4189: 'player_front_vector': ローカル変数が初期化されましたが、参照されていません
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\game\player\defaultplayer.cpp(168): warning C4189: 'player_front_vector': ローカル変数が初期化されましたが、参照されていません
+  Billboard.cpp
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\game\billboard\billboard.cpp(75): warning C4244: '引数': 'int' から 'FLOAT' への変換です。データが失われる可能性があります。
+c:\users\hiros\desktop\バージョン管理\guardiancombat2\project05 - コピー\source\game\billboard\billboard.cpp(76): warning C4244: '引数': 'int' から 'FLOAT' への変換です。データが失われる可能性があります。
+  StayCamera.cpp
+  GameCamera.cpp
+  コードを生成中...
+  project.vcxproj -> C:\Users\hiros\Desktop\バージョン管理\GuardianCombat2\project05 - コピー\Debug\project.exe
+  project.vcxproj -> C:\Users\hiros\Desktop\バージョン管理\GuardianCombat2\project05 - コピー\Debug\project.pdb (Full PDB)

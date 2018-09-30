@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E3F80EAF-8DF1-4F53-8D6E-17E71B9FA12B}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>project</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <TreatWarningAsError>false</TreatWarningAsError>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>winmm.lib;d3d9.lib;Xinput.lib;d3dx9d.lib;dinput8.lib;dxguid.lib;Effekseer.Debug.lib;EffekseerRendererDX9.Debug.lib;EffekseerSoundXAudio2.Debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <TreatWarningAsError>false</TreatWarningAsError>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>winmm.lib;d3d9.lib;Xinput.lib;d3dx9.lib;dinput8.lib;dxguid.lib;Effekseer.Release.lib;EffekseerRendererDX9.Release.lib;EffekseerSoundXAudio2.Release.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\Camera\Camera.cpp" />
+    <ClCompile Include="Source\Camera\GameCamera.cpp" />
+    <ClCompile Include="Source\Camera\StayCamera.cpp" />
+    <ClCompile Include="Source\Collision\Collision.cpp" />
+    <ClCompile Include="Source\DInput\DirectInput.cpp" />
+    <ClCompile Include="Source\DirectXRenderer.cpp" />
+    <ClCompile Include="Source\Game\Billboard\Billboard.cpp" />
+    <ClCompile Include="Source\Game\Enemy\Enemy.cpp" />
+    <ClCompile Include="Source\Game\Enemy\StayEnemy.cpp" />
+    <ClCompile Include="Source\Game\GameManager\GameManager.cpp" />
+    <ClCompile Include="Source\Game\MeshField\MeshField.cpp" />
+    <ClCompile Include="Source\Game\Object.cpp" />
+    <ClCompile Include="Source\Game\Player\AnimationState\StatePlayer_Idle.cpp" />
+    <ClCompile Include="Source\Game\Player\AnimationState\StatePlayer_KickCombo.cpp" />
+    <ClCompile Include="Source\Game\Player\AnimationState\StatePlayer_KickLeft.cpp" />
+    <ClCompile Include="Source\Game\Player\AnimationState\StatePlayer_KickRight.cpp" />
+    <ClCompile Include="Source\Game\Player\AnimationState\StatePlayer_PunchLeft.cpp" />
+    <ClCompile Include="Source\Game\Player\AnimationState\StatePlayer_PunchRight.cpp" />
+    <ClCompile Include="Source\Game\Player\AnimationState\StatePlayer_Run.cpp" />
+    <ClCompile Include="Source\Game\Player\AnimationState\StatePlayer_Walk_Back.cpp" />
+    <ClCompile Include="Source\Game\Player\AnimationState\StatePlayer_Walk_Forward.cpp" />
+    <ClCompile Include="Source\Game\Player\AnimPlayer.cpp" />
+    <ClCompile Include="Source\Game\Player\DefaultPlayer.cpp" />
+    <ClCompile Include="Source\Game\Player\Player.cpp" />
+    <ClCompile Include="Source\Game\Player\PlayerCamera.cpp" />
+    <ClCompile Include="Source\Game\Shader\OutlineShader.cpp" />
+    <ClCompile Include="Source\Game\Shader\ShaderManager.cpp" />
+    <ClCompile Include="Source\Game\Shader\ShadowMapShader.cpp" />
+    <ClCompile Include="Source\Game\Shader\ShadowVolume.cpp" />
+    <ClCompile Include="Source\Game\Shader\ToonShader.cpp" />
+    <ClCompile Include="Source\Game\SkinMesh\sceneSkinMesh.cpp" />
+    <ClCompile Include="Source\Game\SkinMesh\SkinMeshData.cpp" />
+    <ClCompile Include="Source\Game\SkinMesh\SkinMeshFile.cpp" />
+    <ClCompile Include="Source\Game\XModel\XModel.cpp" />
+    <ClCompile Include="Source\Imgui\imgui.cpp" />
+    <ClCompile Include="Source\Imgui\ImguiManager.cpp" />
+    <ClCompile Include="Source\Imgui\imgui_demo.cpp" />
+    <ClCompile Include="Source\Imgui\imgui_draw.cpp" />
+    <ClCompile Include="Source\Imgui\imgui_impl_dx9.cpp" />
+    <ClCompile Include="Source\Light\Light.cpp" />
+    <ClCompile Include="Source\main.cpp" />
+    <ClCompile Include="Source\MouseState\MouseState.cpp" />
+    <ClCompile Include="Source\Scene\Fade.cpp" />
+    <ClCompile Include="Source\Scene\GameScene.cpp" />
+    <ClCompile Include="Source\Sound\Sound.cpp" />
+    <ClCompile Include="Source\Texture\Texture.cpp" />
+    <ClCompile Include="Source\Vector3\Vector3.cpp" />
+    <ClCompile Include="Source\XInput\xcontroller.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\Camera\Camera.h" />
+    <ClInclude Include="Source\Camera\GameCamera.h" />
+    <ClInclude Include="Source\Camera\StayCamera.h" />
+    <ClInclude Include="Source\Collision\Collision.h" />
+    <ClInclude Include="Source\DInput\DirectInput.h" />
+    <ClInclude Include="Source\DirectXRenderer.h" />
+    <ClInclude Include="Source\Game\Billboard\Billboard.h" />
+    <ClInclude Include="Source\Game\Enemy\Enemy.h" />
+    <ClInclude Include="Source\Game\Enemy\StayEnemy.h" />
+    <ClInclude Include="Source\Game\GameManager\GameManager.h" />
+    <ClInclude Include="Source\Game\MeshField\MeshField.h" />
+    <ClInclude Include="Source\Game\Object.h" />
+    <ClInclude Include="Source\Game\Player\AnimationState\StatePlayer.h" />
+    <ClInclude Include="Source\Game\Player\AnimationState\StatePlayer_Idle.h" />
+    <ClInclude Include="Source\Game\Player\AnimationState\StatePlayer_KickCombo.h" />
+    <ClInclude Include="Source\Game\Player\AnimationState\StatePlayer_KickLeft.h" />
+    <ClInclude Include="Source\Game\Player\AnimationState\StatePlayer_KickRight.h" />
+    <ClInclude Include="Source\Game\Player\AnimationState\StatePlayer_PunchLeft.h" />
+    <ClInclude Include="Source\Game\Player\AnimationState\StatePlayer_PunchRight.h" />
+    <ClInclude Include="Source\Game\Player\AnimationState\StatePlayer_Run.h" />
+    <ClInclude Include="Source\Game\Player\AnimationState\StatePlayer_Walk_Back.h" />
+    <ClInclude Include="Source\Game\Player\AnimationState\StatePlayer_Walk_Forward.h" />
+    <ClInclude Include="Source\Game\Player\AnimPlayer.h" />
+    <ClInclude Include="Source\Game\Player\DefaultPlayer.h" />
+    <ClInclude Include="Source\Game\Player\Player.h" />
+    <ClInclude Include="Source\Game\Player\PlayerCamera.h" />
+    <ClInclude Include="Source\Game\Shader\Demo.h" />
+    <ClInclude Include="Source\Game\Shader\OutlineShader.h" />
+    <ClInclude Include="Source\Game\Shader\ShaderManager.h" />
+    <ClInclude Include="Source\Game\Shader\ShadowMapShader.h" />
+    <ClInclude Include="Source\Game\Shader\ShadowVolume.h" />
+    <ClInclude Include="Source\Game\Shader\ToonShader.h" />
+    <ClInclude Include="Source\Game\SkinMesh\sceneSkinMesh.h" />
+    <ClInclude Include="Source\Game\SkinMesh\SkinMeshData.h" />
+    <ClInclude Include="Source\Game\SkinMesh\SkinMeshFile.h" />
+    <ClInclude Include="Source\Game\XModel\XModel.h" />
+    <ClInclude Include="Source\Imgui\imconfig.h" />
+    <ClInclude Include="Source\Imgui\imgui.h" />
+    <ClInclude Include="Source\Imgui\ImguiManager.h" />
+    <ClInclude Include="Source\Imgui\imgui_impl_dx9.h" />
+    <ClInclude Include="Source\Imgui\imgui_internal.h" />
+    <ClInclude Include="Source\Imgui\stb_rect_pack.h" />
+    <ClInclude Include="Source\Imgui\stb_textedit.h" />
+    <ClInclude Include="Source\Imgui\stb_truetype.h" />
+    <ClInclude Include="Source\Light\Light.h" />
+    <ClInclude Include="Source\main.h" />
+    <ClInclude Include="Source\MouseState\MouseState.h" />
+    <ClInclude Include="Source\Scene\Fade.h" />
+    <ClInclude Include="Source\Scene\GameScene.h" />
+    <ClInclude Include="Source\Scene\Scene.h" />
+    <ClInclude Include="Source\Sound\Sound.h" />
+    <ClInclude Include="Source\Texture\Texture.h" />
+    <ClInclude Include="Source\Vector3\Vector3.h" />
+    <ClInclude Include="Source\XInput\xcontroller.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Source\Imgui\imgui.ini" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="resource\Shader\Outline.fx">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">2.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">2.0</ShaderModel>
+    </FxCompile>
+    <FxCompile Include="resource\Shader\ShadowMap.fx">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">2.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">2.0</ShaderModel>
+      <DisableOptimizations Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DisableOptimizations>
+      <DisableOptimizations Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</DisableOptimizations>
+    </FxCompile>
+    <FxCompile Include="resource\Shader\ShadowVolume.fx">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">2.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">2.0</ShaderModel>
+    </FxCompile>
+    <FxCompile Include="resource\Shader\Toon.fx">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">2.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">2.0</ShaderModel>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="resource\Shader\VertexBlend.fx">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">2.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">2.0</ShaderModel>
+    </FxCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
