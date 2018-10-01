@@ -5,44 +5,47 @@
 
 void UIState_Move::Update(UI* ui)
 {
-	//Get Texture
-	auto texture = ui->GetTexture();
-	//Get UIPosition
-	const auto ui_position = ui->GetPosition();
-	//GetCountMove
-	const auto& count_move = ui->GetCountMove();
-	//GetMoveTime
-	const auto& move_time = ui->GetMoveTime();
-	//GetUpdatePos
-	const auto& update_pos = ui->GetAfterPos();
-
-	//移動開始させるか
-	if (count_ >= count_move * GameFPS)
+	if (updateMove_)
 	{
-		if (!initMoveValue_)
+		//Get Texture
+		auto texture = ui->GetTexture();
+		//Get UIPosition
+		const auto& ui_position = ui->GetPosition();
+		//GetCountMove
+		const auto& count_move = ui->GetCountMove();
+		//GetMoveTime
+		const auto& move_time = ui->GetMoveTime();
+		//GetUpdatePos
+		const auto& update_pos = ui->GetAfterPos();
+
+		//移動開始させるか
+		if (count_ >= count_move * GameFPS)
 		{
-			//現在の差分を計算
-			moveValue_.x = update_pos.x - ui_position.x;
-			moveValue_.y = update_pos.y - ui_position.y;
+			if (!initMoveValue_)
+			{
+				//現在の差分を計算
+				moveValue_.x = update_pos.x - ui_position.x;
+				moveValue_.y = update_pos.y - ui_position.y;
 
-			float time = (float)GameFPS * (move_time + count_move);
-			time = time - count_;
+				float time = (float)GameFPS * (move_time + count_move);
+				time = time - count_;
 
-			moveValue_.x = moveValue_.x / time;
-			moveValue_.y = moveValue_.y / time;
+				moveValue_.x = moveValue_.x / time;
+				moveValue_.y = moveValue_.y / time;
 
-			initMoveValue_ = true;
+				initMoveValue_ = true;
+			}
+
+			ui->SetPosition(ui_position.x + moveValue_.x, ui_position.y + moveValue_.y, 0.0f);
 		}
 
-		ui->SetPosition(ui_position.x + moveValue_.x,ui_position.y + moveValue_.y,0.0f);
-	}
+		//移動更新を終えるか
+		if (count_ >= GameFPS * (move_time + count_move))
+		{
+			updateMove_ = false;
+		}
 
-	//移動更新を終えるか
-	if (count_ >= GameFPS * (move_time + count_move))
-	{
-		ui->SetUpdateMove(false);
+		//Update Count
+		count_++;
 	}
-
-	//Update Count
-	count_++;
 }

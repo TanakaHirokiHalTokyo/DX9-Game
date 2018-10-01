@@ -13,6 +13,7 @@ Core::Core()
 {
 	model_ = Object::Create<XModel>();
 	model_->SetModelType(XModel::MODE_CORE);
+	model_->SetUseShader(true);
 	coreEffect_ =new CEffekseer(CEffekseer::Effect_Core);
 	coreEffect_->Init();
 	coreEffect_->RepeatEffect(true);

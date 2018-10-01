@@ -7,7 +7,7 @@
 
 constexpr float ANIMATION_SPEED = 2.0f;
 constexpr float ANIMATION_TIME = 1.5f;
-constexpr int ANIMATION_COUNT = (int)ANIMATION_TIME * GameFPS / ANIMATION_SPEED;
+constexpr int ANIMATION_COUNT = (const int)(ANIMATION_TIME * GameFPS / ANIMATION_SPEED);
 
 void StatePlayer_PunchCombo::UpdateKeyboard(DefaultPlayer * player)
 {

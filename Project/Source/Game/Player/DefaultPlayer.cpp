@@ -5,6 +5,8 @@
 #include "PlayerCamera.h"
 #include "AnimationState\StatePlayer_Idle.h"
 #include "../../DInput/DirectInput.h"
+#include "../MeshField/MeshField.h"
+#include "../../Imgui/ImguiManager.h"
 
 #define PLAYER_ROT_KEY1 (DIK_Q)
 #define PLAYER_ROT_KEY2 (DIK_E)
@@ -94,6 +96,14 @@ void DefaultPlayer::Update()
 		//使用しているカメラの更新処理
 		usingCamera_->Update();
 	}
+	if (onLand_)
+	{
+		float y = MeshField::GetHeight(GetPosition());
+		transform_.pos.y = y;
+		ImGui::Begin("FieldHeight");
+		ImGui::Text("%f",y);
+		ImGui::End();
+	}
 
 	//アニメーションモデル更新
 	animationModel_->SetPosition(GetPosition());
@@ -149,7 +159,6 @@ void DefaultPlayer::RotatePlayer()
 		transform_.rotate.y -= ROTATE_CAMERA_SPEED;
 		D3DXMatrixRotationY(&mtxRotateY, D3DXToRadian(-ROTATE_CAMERA_SPEED));
 
-		const auto& player_front_vector = vector_->GetFront();
 		D3DXVECTOR3 front, right;
 
 		D3DXVec3TransformNormal(&front, &vector_->GetFront(), &mtxRotateY);
@@ -165,7 +174,6 @@ void DefaultPlayer::RotatePlayer()
 		transform_.rotate.y += ROTATE_CAMERA_SPEED;
 		D3DXMatrixRotationY(&mtxRotateY, D3DXToRadian(ROTATE_CAMERA_SPEED));
 
-		const auto& player_front_vector = vector_->GetFront();
 		D3DXVECTOR3 front, right;
 
 		D3DXVec3TransformNormal(&front, &vector_->GetFront(), &mtxRotateY);

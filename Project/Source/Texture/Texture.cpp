@@ -10,6 +10,7 @@ const TEXTURE_3D TextureManager::texInfo_[TextureManager::TextureList::Tex_Max]
 	"resource/texture/0.png",						29, 31,29,31,
 	"resource/texture/Dot.png",						1, 1,1,1,
 	"resource/texture/ToonPaint.png",				256, 256,256,256,
+	"resource/texture/Mission.png",					395, 70,395,70,
 };
 void TextureManager::LoadAll()
 {

@@ -32,12 +32,13 @@ GameScene::GameScene()
 	core_ = Object::Create<Core>();
 	Portal* portal =  Object::Create<Portal>();
 	portal->SetPosition(10.0f,0.0f,0.0f);
+	portal->SetRotation(0.0f,90.0f,0.0f);
 
-	UI* ui = Object::Create<UI>(TextureManager::Tex_Fade);
-	ui->SetScale(100.0f,100.0f,100.0f);
-	ui->SetPosition((float)ScreenWidth / 2.0f, (float)ScreenHeight / 2.0f,0.0f);
-	ui->MoveTexture(1.0f,30.0f,0,0);
-	ui->ScalingTexture(1.0f,30.0f,300.0f,300.0f);
+	UI* ui = Object::Create<UI>(TextureManager::Tex_Mission);
+	ui->SetScale(200.0f,40.0f,0.0f);
+	ui->SetPosition(-200.0f, (float)ScreenHeight / 2.0f,0.0f);
+	ui->MoveTexture(0.0f,5.0f,0, (float)ScreenHeight / 2.0f);
+	ui->ScalingTexture(0.0f, 5.0f,200.0f,40.0f);
 }
 
 GameScene::~GameScene()

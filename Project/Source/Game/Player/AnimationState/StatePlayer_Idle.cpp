@@ -13,9 +13,6 @@ void StatePlayer_Idle::UpdateKeyboard(DefaultPlayer* player)
 	//Get SkinMesh
 	auto player_model = player->GetAnimModel();
 
-	//Get PlayerPosition
-	const auto& player_position = player->GetPosition();
-
 	player_model->SetAnimPlaySpeed(ANIMATION_SPEED_IDLE);
 
 	//ÉLÉbÉN

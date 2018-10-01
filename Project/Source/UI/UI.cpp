@@ -38,20 +38,9 @@ void UI::Uninit()
 
 void UI::Update()
 {
-	if (move_)
-	{
-		if (updateMove_)
-		{
-			if (stateMove_ != nullptr) { stateMove_->Update(this); }
-		}
-	}
-	if (scale_)
-	{
-		if (updateScale_)
-		{
-			if (stateScale_ != nullptr) { stateScale_->Update(this); }
-		}
-	}
+	if (stateMove_ != nullptr) { stateMove_->Update(this); }			//ポジション更新
+	if (stateScale_ != nullptr) { stateScale_->Update(this); }			//サイズ更新
+
 	texture_->SetPosition(GetPosition());
 	texture_->SetDrawSize(GetScale().x, GetScale().y);
 }
@@ -73,11 +62,9 @@ void UI::EndDraw()
 
 void UI::MoveTexture(float afterSpawnCount, float moveTime, float update_x, float update_y)
 {
-	if (stateMove_ == nullptr)
-	{
-		stateMove_ = new UIState_Move();
-	}
-	this->move_ = true;
+	if (stateMove_ == nullptr) { stateMove_ = new UIState_Move(); }
+	else { delete stateMove_; stateMove_ = new UIState_Move(); }						//更新途中に別の動きをさせたい場合new しなおす
+
 	this->countMove_ = afterSpawnCount;
 	this->moveTime_ = moveTime;
 	this->updatePos_.x = update_x;
@@ -86,11 +73,9 @@ void UI::MoveTexture(float afterSpawnCount, float moveTime, float update_x, floa
 
 void UI::MoveTexture(float afterSpawnCount, float moveTime, D3DXVECTOR3 update_pos)
 {
-	if (stateMove_ == nullptr)
-	{
-		stateMove_ = new UIState_Move();
-	}
-	this->move_ = true;
+	if (stateMove_ == nullptr){	stateMove_ = new UIState_Move();}
+	else { delete stateMove_; stateMove_ = new UIState_Move(); }						//更新途中に別の動きをさせたい場合new しなおす
+
 	this->countMove_ = afterSpawnCount;
 	this->moveTime_ = moveTime;
 	this->updatePos_.x = update_pos.x;
@@ -99,11 +84,9 @@ void UI::MoveTexture(float afterSpawnCount, float moveTime, D3DXVECTOR3 update_p
 
 void UI::MoveTexture(float afterSpawnCount, float moveTime, D3DXVECTOR2 update_pos)
 {
-	if (stateMove_ == nullptr)
-	{
-		stateMove_ = new UIState_Move();
-	}
-	this->move_ = true;
+	if (stateMove_ == nullptr) { stateMove_ = new UIState_Move(); }
+	else { delete stateMove_; stateMove_ = new UIState_Move(); }						//更新途中に別の動きをさせたい場合new しなおす
+
 	this->countMove_ = afterSpawnCount;
 	this->moveTime_ = moveTime;
 	this->updatePos_.x = update_pos.x;
@@ -112,11 +95,9 @@ void UI::MoveTexture(float afterSpawnCount, float moveTime, D3DXVECTOR2 update_p
 
 void UI::ScalingTexture(float afterSpawnCount, float moveTime, float update_x, float update_y)
 {
-	if (stateScale_ == nullptr)
-	{
-		stateScale_ = new UIState_Scale();
-	}
-	this->scale_ = true;
+	if (stateScale_ == nullptr){ stateScale_ = new UIState_Scale();}
+	else { delete stateScale_; stateScale_ = new UIState_Scale(); }
+
 	this->countScale_ = afterSpawnCount;
 	this->scaleTime_ = moveTime;
 	this->updateSize_.x = update_x;
@@ -125,11 +106,9 @@ void UI::ScalingTexture(float afterSpawnCount, float moveTime, float update_x, f
 
 void UI::ScalingTexture(float afterSpawnCount, float moveTime, D3DXVECTOR3 update_scale)
 {
-	if (stateScale_ == nullptr)
-	{
-		stateScale_ = new UIState_Scale();
-	}
-	this->scale_ = true;
+	if (stateScale_ == nullptr) { stateScale_ = new UIState_Scale(); }
+	else { delete stateScale_; stateScale_ = new UIState_Scale(); }
+
 	this->countScale_ = afterSpawnCount;
 	this->scaleTime_ = moveTime;
 	this->updateSize_.x = update_scale.x;
@@ -138,11 +117,9 @@ void UI::ScalingTexture(float afterSpawnCount, float moveTime, D3DXVECTOR3 updat
 
 void UI::ScalingTexture(float afterSpawnCount, float moveTime, D3DXVECTOR2 update_scale)
 {
-	if (stateScale_ == nullptr)
-	{
-		stateScale_ = new UIState_Scale();
-	}
-	this->scale_ = true;
+	if (stateScale_ == nullptr) { stateScale_ = new UIState_Scale(); }
+	else { delete stateScale_; stateScale_ = new UIState_Scale(); }
+
 	this->countScale_ = afterSpawnCount;
 	this->scaleTime_ = moveTime;
 	this->updateSize_.x = update_scale.x;
@@ -169,16 +146,6 @@ D3DXVECTOR2 UI::GetAfterPos()
 	return updatePos_;
 }
 
-void UI::SetUpdateMove(bool flag)
-{
-	updateMove_ = flag;
-}
-
-bool UI::GetUpdateMove()
-{
-	return updateMove_;
-}
-
 float UI::GetCountScale()
 {
 	return countScale_;
@@ -193,14 +160,3 @@ D3DXVECTOR2 UI::GetAfterScale()
 {
 	return updateSize_;
 }
-
-void UI::SetUpdateScale(bool flag)
-{
-	updateScale_ = flag;
-}
-
-bool UI::GetUpdateScale()
-{
-	return updateScale_;
-}
-

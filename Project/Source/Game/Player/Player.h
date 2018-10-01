@@ -26,9 +26,12 @@ public:
 	}
 	Vector3* GetVector();
 
+	void SetOnLand(bool flag);
+	bool GetOnLand();
 protected:
 	SceneSkinMesh* animModel_ = nullptr;			//アニメーション付きモデル
 	float speed_ = PLAYER_DEFAULT_SPEED;			//プレイヤースピード
 	float life_ = PLAYER_DEFAULT_LIFE;				//プレイヤー体力
 	Vector3* vector_ = nullptr;						//プレイヤーベクトル
+	bool onLand_ = true;							//地面に乗っているか
 };

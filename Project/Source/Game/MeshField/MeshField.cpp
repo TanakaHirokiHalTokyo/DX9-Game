@@ -144,7 +144,7 @@ void MeshField::Init()
 	}
 
 	useShader_ = USE_SHADER;
-	SetScale(0.01f,0.01f,0.01f);
+	SetScale(1.0f, 1.0f, 1.0f);
 
 	file.close();
 }

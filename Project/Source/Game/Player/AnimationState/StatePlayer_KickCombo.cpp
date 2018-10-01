@@ -6,7 +6,7 @@
 #include "../../../main.h"
 
 constexpr float ANIMATION_TIME = 1.8f;
-constexpr int	ANIMATION_COUNT = (int)GameFPS * ANIMATION_TIME / ANIMATION_SPEED_KICK;
+constexpr int	ANIMATION_COUNT = (int)(GameFPS * ANIMATION_TIME / ANIMATION_SPEED_KICK);
 
 void StatePlayer_KickCombo::UpdateKeyboard(DefaultPlayer * player)
 {
