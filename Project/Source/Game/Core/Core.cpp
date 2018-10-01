@@ -114,11 +114,6 @@ void Core::Draw()
 		ToonShader::SetInfo(world_);
 		effect->SetTechnique("ToonPaintInk");
 		model_->Draw(effect,0);
-
-		//ShadowMap
-		effect = ShadowMapShader::GetEffect();
-		effect->SetTechnique("Scene");
-		model_->Draw(effect,0);
 	}
 
 	ImGui::Begin("Core Info"); 

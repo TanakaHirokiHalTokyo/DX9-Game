@@ -11,6 +11,7 @@ constexpr float ANIMATION_SPEED_KICK = 2.0f;
 #define SPRINT_KEY		(DIK_LSHIFT)
 #define KICK_KEY		(DIK_J)
 #define PUNCH_KEY		(DIK_K)
+#define JUMP_KEY		(DIK_SPACE)
 
 class DefaultPlayer;
 class StatePlayer

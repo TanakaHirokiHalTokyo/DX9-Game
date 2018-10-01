@@ -7,6 +7,7 @@
 #include "StatePlayer_KickRight.h"
 #include "StatePlayer_PunchLeft.h"
 #include "StatePlayer_Run.h"
+#include "StatePlayer_Jump.h"
 
 void StatePlayer_Idle::UpdateKeyboard(DefaultPlayer* player)
 {
@@ -27,6 +28,12 @@ void StatePlayer_Idle::UpdateKeyboard(DefaultPlayer* player)
 	{
 		player_model->ChangeAnim(DefaultPlayer::PUNCH_LEFT,ANIMATION_SHIFTTIME);
 		player->ChangeState(new StatePlayer_PunchLeft());
+		return;
+	}
+	if (GetKeyboardTrigger(JUMP_KEY))
+	{
+		player_model->ChangeAnim(DefaultPlayer::JUMP, ANIMATION_SHIFTTIME);
+		player->ChangeState(new StatePlayer_Jump());
 		return;
 	}
 

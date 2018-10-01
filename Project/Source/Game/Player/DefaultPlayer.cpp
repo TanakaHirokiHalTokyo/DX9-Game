@@ -96,13 +96,21 @@ void DefaultPlayer::Update()
 		//使用しているカメラの更新処理
 		usingCamera_->Update();
 	}
+	float y = MeshField::GetHeight(GetPosition());
 	if (onLand_)
 	{
-		float y = MeshField::GetHeight(GetPosition());
 		transform_.pos.y = y;
 		ImGui::Begin("FieldHeight");
 		ImGui::Text("%f",y);
 		ImGui::End();
+	}
+	else
+	{
+		if (transform_.pos.y <= y)
+		{
+			onLand_ = true;
+			transform_.pos.y = y;
+		}
 	}
 
 	//アニメーションモデル更新
