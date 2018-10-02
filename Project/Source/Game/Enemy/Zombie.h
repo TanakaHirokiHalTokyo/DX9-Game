@@ -1,19 +1,15 @@
 #pragma once
-
 #include "Enemy.h"
-class Texture;
 
-class StayEnemy :public Enemy
+class Zombie :public Enemy
 {
 public:
-	StayEnemy();
-	~StayEnemy();
+	Zombie();
+	~Zombie()override;
 	void Init()override;
 	void Uninit()override;
 	void Update()override;
 	void BeginDraw()override;
 	void Draw()override;
 	void EndDraw()override;
-private:
-	LPD3DXSPRITE shadow_ = NULL;
 };

@@ -14,6 +14,7 @@ static const int MAX_ANIMATION = 20;
 enum MODEL_ID
 {
 	DEFAULT_PLAYER,
+	ZOMBIE,
 	ID_MAX
 };
 

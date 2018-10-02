@@ -5,6 +5,8 @@
 #include "../../../DInput/DirectInput.h"
 #include "StatePlayer_KickCombo.h"
 #include "../../../main.h"
+#include "StatePlayer_Walk_Back.h"
+#include "StatePlayer_Walk_Forward.h"
 
 constexpr float ANIMATION_TIME = 1.8f;
 constexpr int	ANIMATION_COUNT = (int)(GameFPS * ANIMATION_TIME / ANIMATION_SPEED_KICK);
@@ -29,6 +31,19 @@ void StatePlayer_KickLeft::UpdateKeyboard(DefaultPlayer * player)
 		}
 		else
 		{
+			if (GetKeyboardPress(WALK_FRONT_KEY))
+			{
+				player_model->ChangeAnim(DefaultPlayer::WALK_FORWARD,ANIMATION_SHIFTTIME);
+				player->ChangeState(new StatePlayer_Walk_Forward());
+				return;
+			}
+			if (GetKeyboardPress(WALK_BACK_KEY))
+			{
+				player_model->ChangeAnim(DefaultPlayer::WALK_BACK,ANIMATION_SHIFTTIME);
+				player->ChangeState(new StatePlayer_Walk_Back());
+				return;
+			}
+
 			player_model->ChangeAnim(DefaultPlayer::IDLE,ANIMATION_SHIFTTIME);
 			player->ChangeState(new StatePlayer_Idle());
 			return;
